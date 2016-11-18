@@ -13,7 +13,7 @@ class Article extends Component {
 
     render() {
         const { article } = this.props
-        const body = this.state.isOpen ? <div>{article.text} <CommentList comments = {article.comments} /></div> : null
+        const body = this.state.isOpen ? <div>{article.text} <hr/> <CommentList comments = {article.comments} /></div> : null
         return (
             <section>
                 <h3 style = {{cursor: 'pointer'}} onClick = {this.handleClick}>{article.title}</h3>

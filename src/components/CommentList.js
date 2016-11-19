@@ -44,7 +44,6 @@ export default class CommentList extends Component {
 
       if (!comments || comments.length === 0) {
         return <div>
-          <hr/>
           <i>0 comments</i>
         </div>
       }

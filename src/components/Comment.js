@@ -5,7 +5,7 @@ import React  from 'react'
  * так как его задача отобразить данные в заданном формате
  */
 
-export default props => {
+const Comment = props => {
   const { comment } = props
   const title = (comment.title) ? <strong  style = {{display: 'block'}} >{comment.title}</strong> : null
 
@@ -16,3 +16,5 @@ export default props => {
     </div>
   )
 }
+
+export default Comment

@@ -1,38 +1,30 @@
 import React, { Component }  from 'react'
 import Article from './Article'
+import openArticle from '../decorators/openArticle'
 
 class ArticleList extends Component {
-    state = {
-        openArticleId: null
-    }
 
     render() {
-        const { articles } = this.props
-
-        const articleItems = articles.map(article => (
-            <li key = {article.id}>
-                <Article
-                    article = {article}
-                    isOpen = {article.id == this.state.openArticleId}
-                    toggleOpen = {this.openArticle(article.id)}
-                />
-            </li>
-        ))
-
         return (
             <ul>
-                {articleItems}
+                {this.getList()}
             </ul>
         )
     }
 
-    openArticle = id => ev => {
-        const { openArticleId } = this.state
+    getList() {
+      const { articles, openArticleId, openArticle } = this.props
 
-        this.setState({
-            openArticleId: (openArticleId !== id) ? id : null
-        })
+      return articles.map(article => (
+          <li key = {article.id}>
+              <Article
+                  article = {article}
+                  isOpen = {article.id == openArticleId}
+                  toggleOpen = {openArticle(article.id)}
+              />
+          </li>
+      ))
     }
 }
 
-export default ArticleList
+export default openArticle(ArticleList)

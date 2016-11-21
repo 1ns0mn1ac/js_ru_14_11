@@ -27,8 +27,10 @@ class ArticleList extends Component {
     }
 
     openArticle = id => ev => {
+        const { openArticleId } = this.state
+
         this.setState({
-            openArticleId: id
+            openArticleId: (openArticleId !== id) ? id : null
         })
     }
 }

@@ -1,8 +1,18 @@
-import React, { Component }  from 'react'
+import React, { Component, PropTypes }  from 'react'
 import Article from './Article'
-import openArticle from '../decorators/openArticle'
+import accordion from '../decorators/accordion'
 
 class ArticleList extends Component {
+
+    static propTypes = {
+      articles: PropTypes.arrayOf(PropTypes.object).isRequired,
+      activeSectionId: PropTypes.string,
+      /* Не понимаю, почему когда я пишу isRequired для toggleSection
+      * в консоле ругается "The prop `toggleSection` is marked as required in `Accordion`"
+      * хотя аналогичная запись в CommentList не выдаёт Warning в декораторе
+      */
+      toggleSection: PropTypes.func.isRequired
+    }
 
     render() {
         return (
@@ -13,18 +23,18 @@ class ArticleList extends Component {
     }
 
     getList() {
-      const { articles, openArticleId, openArticle } = this.props
+      const { articles, activeSectionId, toggleSection } = this.props
 
       return articles.map(article => (
           <li key = {article.id}>
               <Article
                   article = {article}
-                  isOpen = {article.id == openArticleId}
-                  toggleOpen = {openArticle(article.id)}
+                  isOpen = {article.id == activeSectionId}
+                  toggleOpen = {toggleSection(article.id)}
               />
           </li>
       ))
     }
 }
 
-export default openArticle(ArticleList)
+export default accordion(ArticleList)

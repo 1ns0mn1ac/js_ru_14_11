@@ -7,6 +7,7 @@ class ArticleList extends Component {
     static propTypes = {
       articles: PropTypes.arrayOf(PropTypes.object).isRequired,
       activeSectionId: PropTypes.string,
+      //потому, что activeSectionId по дефолту у тебя == null
       /* Не понимаю, почему когда я пишу isRequired для toggleSection
       * в консоле ругается "The prop `toggleSection` is marked as required in `Accordion`"
       * хотя аналогичная запись в CommentList не выдаёт Warning в декораторе

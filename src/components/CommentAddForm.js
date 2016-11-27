@@ -8,15 +8,16 @@ export default class CommentAddForm extends Component {
 
   state = {
     comment: '',
+    title: '',
     user: ''
   }
 
   render() {
-    const {action, method} = this.props
-
     return (
       <form action = "commentAdd.action" method = "POST" onSubmit = {this.handleSubmit}>
         {this.renderUserField()}
+        <br />
+        {this.renderTitleField()}
         <br />
         {this.renderCommentField()}
         <br />
@@ -32,6 +33,16 @@ export default class CommentAddForm extends Component {
       value = {this.state.user}
       onChange = {this.handleChange}
       placeholder = "Enter user name"
+    />
+  }
+
+  renderTitleField() {
+    return <input
+      required
+      name = "title"
+      value = {this.state.title}
+      onChange = {this.handleChange}
+      placeholder = "Enter title"
     />
   }
 
@@ -53,12 +64,13 @@ export default class CommentAddForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { articleId } = this.props
-    const { comment, user } = this.state
+    const { comment, title, user } = this.state
 
-    console.log(`Created comment "${comment}" by ${user} for article: ${articleId} `)
+    console.log(`Created comment "${comment}" with title "${title}" by ${user} for article: ${articleId} `)
 
     this.setState({
       comment: '',
+      title: '',
       user: ''
     })
   }

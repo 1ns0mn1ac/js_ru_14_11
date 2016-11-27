@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { findDOMNode } from 'react-dom'
 import CommentList from './CommentList'
-
+import CommentAddForm from './CommentAddForm'
 class Article extends Component {
 
 /*
@@ -36,6 +36,8 @@ class Article extends Component {
             <div>
                 <p>{article.text}</p>
                 <CommentList comments = {article.comments} ref = "comments" />
+                <hr />
+                <CommentAddForm articleId = {article.id} />
             </div>
         )
     }

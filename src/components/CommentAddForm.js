@@ -58,6 +58,7 @@ export default class CommentAddForm extends Component {
   }
 
   handleChange = e => this.setState({
+    //ок, но лучше бы сделать через карринг, чем targt.name
     [e.target.name]: e.target.value
   })
 

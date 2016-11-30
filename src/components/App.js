@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ArticleList from './ArticleList'
-import Select from 'react-select'
+import SelectFilter from './SelectFilter'
 import Chart from './Chart'
 import DateRange from './DateRange'
 import Counter from './Counter'
@@ -22,8 +22,9 @@ class App extends Component {
                 <Counter />
                 <Chart />
                 <DateRange />
+                <SelectFilter />
                 <ArticleList />
-                <Select options = {options} value = {this.state.selected} onChange = {this.handleChange} multi = {true}/>
+
             </div>
         )
     }

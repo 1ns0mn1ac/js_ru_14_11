@@ -12,14 +12,16 @@ export default (state = initialState, action) => {
     const { type, payload } = action
     switch (type) {
         case CHANGE_DATE_RANGE:
-            return Object.assign({}, state, {
-              dateRange: payload.dateRange
-            })
+          return {
+            ...state,
+            dateRange: payload.dateRange
+          }
 
         case SET_SELECTED:
-          return Object.assign({}, state, {
+          return {
+            ...state,
             selected: payload.selected
-          })
+          }
     }
 
     return state

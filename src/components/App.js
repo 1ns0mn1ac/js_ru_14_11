@@ -7,7 +7,7 @@ import Counter from './Counter'
 import 'react-select/dist/react-select.css'
 
 class App extends Component {
-
+    //удали этот стрейт, он уже лишний
     state = {
         selected: null
     }

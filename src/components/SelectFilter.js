@@ -7,8 +7,10 @@ import 'react-select/dist/react-select.css'
 
 class SelectFilter extends Component {
     static propTypes = {
-        articles: PropTypes.array.isRequired
-    };
+        articles: PropTypes.array.isRequired,
+        //from connect
+        changeSelection: PropTypes.array
+    }
 
     handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
 
@@ -28,7 +30,16 @@ class SelectFilter extends Component {
     }
 }
 
-export default connect(state => ({
-    selected: state.filters.selected,
-    articles: state.articles
-}), { changeSelection })(SelectFilter)
+export default connect(state => {
+  const { articles, filters } = state
+  const selected = filters.selected
+  const { from, to } = filters.dateRange
+
+  return {
+    selected: selected,
+    articles: articles.toArray().filter(article => {
+      const published = Date.parse(article.date)
+      return (!from || !to || (published > from && published < to))
+    })
+  }
+}, { changeSelection })(SelectFilter)

@@ -12,12 +12,12 @@ class ArticleList extends Component {
     }
 
     componentWillMount() {
-        console.log('---', 'mounting')
+        // console.log('---', 'mounting')
     }
 
     componentDidMount() {
-        console.log('---', 'mounted', this.containerRef)
-        console.log('---', this.refs)
+        // console.log('---', 'mounted', this.containerRef)
+        // console.log('---', this.refs)
     }
 
     componentWillReceiveProps(nexProps) {
@@ -60,8 +60,9 @@ export default connect(state => {
     const selected = filters.selected
     const { from, to } = filters.dateRange
 
-    const filteredArticles = articles.filter(article => {
+    const filteredArticles = articles.toArray().filter(article => {
         const published = Date.parse(article.date)
+
         return (!selected.length || selected.includes(article.id)) &&
             (!from || !to || (published > from && published < to))
     })

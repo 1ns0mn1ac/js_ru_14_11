@@ -1,4 +1,4 @@
-import {  } from '../constants'
+import { CREATE_COMMENT } from '../constants'
 import { normalizedComments } from '../fixtures'
 import { Map } from 'immutable'
 
@@ -10,7 +10,9 @@ export default (comments = defaultComments, action) => {
     const { type, payload, response, error } = action
 
     switch (type) {
-
+      case CREATE_COMMENT:
+        const { comment } = payload
+        return comments.set(comment.id, comment)
     }
 
     return comments

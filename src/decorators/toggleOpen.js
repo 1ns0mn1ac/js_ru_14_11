@@ -13,6 +13,7 @@ export default (Component) => class WrappedComponent extends React.Component {
     }
 
     toggleOpen = ev => {
+        ev.preventDefault()
         this.setState({
             isOpen: !this.state.isOpen
         })

@@ -31,9 +31,9 @@ export default class NewCommentForm extends Component {
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
-                comment: <input type="text" value={this.state.text} onChange = {this.handleChange('text')}/>
+                comment: <input required type="text" value={this.state.text} onChange = {this.handleChange('text')}/>
                 title: <input type="text" value={this.state.title} onChange = {this.handleChange('title')}/>
-                user: <input type="text" value={this.state.user} onChange = {this.handleChange('user')}/>
+                user: <input required type="text" value={this.state.user} onChange = {this.handleChange('user')}/>
                 <input type = "submit"/>
             </form>
         )

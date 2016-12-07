@@ -14,6 +14,7 @@ export default (articlesState = initialState, action) => {
             return articlesState.delete(payload.articleId)
 
         case CREATE_COMMENT:
+            //не мутируй данные! мы для этого даже immutable завели
             articlesState.getIn([payload.articleId]).comments.push(payload.comment.id)
               
             return articlesState
